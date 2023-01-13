@@ -1,8 +1,72 @@
+<div class="search">
+    <form  #form="ngForm" (submit)="onSubmit()">
+        <input type='text' placeholder="Search city" [(ngModel)]="cityName" name="city">
+    </form>
+</div>
 <div class="container">
     <div class="upper-data">
-        Upper
+        <img src="../assets/1kbh_9feb_210426.jpg" *ngIf=" data?.main!.temp > 10">
+        <img src="../assets/beautiful-frost-pattern-window.jpg" *ngIf=" data?.main!.temp  <=10">
+        <span class="location">
+            {{ data?.name }}
+        </span>
+        <span class="temperature">
+            {{data?.main?.temp | number}} °C
+        </span>
+       
     </div>
     <div class="lower-data">
-        Lower
+        <div class="more-info-label">
+            More Information
+        </div>
+        <div class="more-info-block">
+        <div class="info-block">
+            <div class="info-block-label">
+                <img src="../assets/low-temperature.png">
+                <span>
+                    min
+                </span>
+            </div>
+            <div class="info-block-value">
+                {{data?.main?.temp_min | number}} °C
+            </div>
+        </div>
+
+        <div class="info-block">
+            <div class="info-block-label">
+                <img src="../assets/high-temperature.png">
+                <span>
+                    max
+                </span>
+            </div>
+            <div class="info-block-value">
+                {{data?.main?.temp_max | number}} °C
+            </div>
+        </div>
+
+        <div class="info-block">
+            <div class="info-block-label">
+                <img src="../assets/rain.png">
+                <span>
+                    rain
+                </span>
+            </div>
+            <div class="info-block-value">
+               {{ data?.main?.humidity}} %
+            </div>
+        </div>
+
+        <div class="info-block">
+            <div class="info-block-label">
+                <img src="../assets/wind.png">
+                <span>
+                    wind
+                </span>
+            </div>
+            <div class="info-block-value">
+                {{data?.wind?.speed}} km/h
+            </div>
+        </div>
+        </div>
     </div>
 </div>
